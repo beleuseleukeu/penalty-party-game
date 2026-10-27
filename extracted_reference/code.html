@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Penalty Party - 파티 벌칙 복불복 미니게임</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Outfit:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#d7d8ef","sky-blue":"#38BDF8","surface-variant":"#e0e1f8","on-background":"#181a2b","surface-container-highest":"#e0e1f8","on-error":"#ffffff","surface-cream":"#FAF9FC","error-container":"#ffdad6","outline":"#797487","on-surface":"#181a2b","on-surface-variant":"#484455","inverse-primary":"#cbbeff","surface-container":"#ececff","surface-card":"#FFFFFF","on-tertiary-container":"#ffffff","background":"#fbf8ff","secondary-fixed":"#ffd9e0","success-mint":"#10B981","primary-container":"#7b57ff","secondary":"#b7125a","tertiary-container":"#008672","inverse-on-surface":"#f0efff","on-secondary-fixed-variant":"#8f0043","tertiary":"#006a5a","primary":"#6239e5","tertiary-fixed-dim":"#2adec0","on-primary":"#ffffff","surface-tint":"#6239e5","error":"#ba1a1a","on-primary-fixed-variant":"#4a0fce","on-error-container":"#93000a","surface-container-low":"#f4f2ff","on-tertiary-fixed":"#00201a","danger-coral":"#FF4365","on-secondary-container":"#5e002a","primary-fixed":"#e6deff","surface":"#fbf8ff","tertiary-fixed":"#57fbdb","on-secondary-fixed":"#3f001a","surface-container-lowest":"#ffffff","surface-container-high":"#e6e6fe","on-primary-fixed":"#1d0061","party-yellow":"#FFD027","on-secondary":"#ffffff","on-primary-container":"#ffffff","on-tertiary":"#ffffff","primary-fixed-dim":"#cbbeff","secondary-fixed-dim":"#ffb1c4","outline-variant":"#cac3d8","secondary-container":"#ff528f","on-tertiary-fixed-variant":"#005144","inverse-surface":"#2d2f41","surface-bright":"#fbf8ff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-xl":"2.5rem","space-md":"1rem","space-xs":"0.25rem","margin":"1rem","gutter-md":"1.5rem","space-sm":"0.5rem","margin-md":"2rem","margin-lg":"3rem","gutter":"1rem"},"fontFamily":{"body-lg":["Hanken Grotesk"],"headline-md":["Outfit"],"label-sm":["Outfit"],"display-hero":["Outfit"],"headline-lg":["Outfit"],"display-hero-mobile":["Outfit"],"headline-sm":["Outfit"],"headline-lg-mobile":["Outfit"],"label-lg":["Outfit"],"body-sm":["Hanken Grotesk"],"body-md":["Hanken Grotesk"],"label-md":["Outfit"]},"fontSize":{"body-lg":["16px",{"lineHeight":"24px","fontWeight":"500"}],"headline-md":["22px",{"lineHeight":"28px","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"800"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-hero-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"800"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","fontWeight":"700"}],"label-lg":["15px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"16px","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(123,87,255,0.06)]"><div class="h-20 max-w-[840px] mx-auto px-margin md:px-margin-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm select-none cursor-pointer"><div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_4px_12px_rgba(123,87,255,0.35)] transform transition-transform hover:rotate-6"><span class="material-symbols-outlined text-[22px]">celebration</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">Penalty Party</span><span class="material-symbols-outlined text-party-yellow text-[20px]">casino</span></div><span class="font-label-sm text-label-sm text-on-surface-variant font-medium hidden sm:inline-block">모임 &amp; 파티 벌칙 복불복 게임</span></div></div><div class="flex items-center gap-space-xs sm:gap-space-sm"><button aria-label="사운드 토글" class="p-space-sm rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><button aria-label="빠른 리셋" class="p-space-sm rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">refresh</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="max-w-[840px] mx-auto px-margin md:px-margin-md pb-space-sm"><nav class="flex items-center p-1 bg-surface-card rounded-full shadow-[0_2px_12px_rgba(123,87,255,0.06)] overflow-x-auto justify-between" data-active-classes="bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_4px_14px_rgba(123,87,255,0.28)]"><a aria-current="page" class="flex-1 py-2 px-space-sm rounded-full transition-all whitespace-nowrap bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_4px_14px_rgba(123,87,255,0.28)]" data-path="ladder-game" href="#">사다리 타기</a><a class="flex-1 text-center py-2 px-space-sm rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all whitespace-nowrap" data-path="roulette-wheel" href="#">원형 돌림판</a><a class="flex-1 text-center py-2 px-space-sm rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all whitespace-nowrap" data-path="crocodile-teeth" href="#">악어 이빨 복불복</a><a class="flex-1 text-center py-2 px-space-sm rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all whitespace-nowrap" data-path="game-settings" href="#">참가자 &amp; 벌칙 설정</a></nav></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="max-w-[840px] mx-auto px-margin md:px-margin-md pt-12 pb-space-xl"><div class="flex flex-col w-full">
+<!-- Dynamic Confetti / Ambient Flash Canvas Layer -->
+<div class="relative w-full overflow-hidden pb-space-lg">
+<div class="absolute -top-12 -right-8 w-64 h-64 bg-primary-fixed-dim/25 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/3 -left-12 w-52 h-52 bg-secondary-container/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Top Headline & Action Ribbon -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-secondary-container mb-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Exciting Ladder Match</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">도키도키 사다리 타기</h2>
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-2.5 py-0.5 rounded-full font-semibold">PARTY MODE</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">참가자를 누르면 짜릿하게 경로를 타고 내려갑니다! 누구의 벌칙이 될까요?</p>
+</div>
+<!-- Quick Controls Ribbon -->
+<div class="flex items-center flex-wrap gap-space-xs sm:gap-space-sm bg-surface-card p-1.5 rounded-full shadow-[0_4px_16px_rgba(98,57,229,0.08)]">
+<div class="flex items-center px-3 py-1 bg-surface-container-low rounded-full gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">참가자</span>
+<div class="flex items-center gap-1">
+<button class="w-6 h-6 rounded-full bg-surface-card text-on-surface flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all font-bold text-xs shadow-sm" id="btn-dec-players" type="button">-</button>
+<span class="font-headline-sm text-headline-sm text-primary w-5 text-center leading-none" id="player-count-display">4</span>
+<button class="w-6 h-6 rounded-full bg-surface-card text-on-surface flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all font-bold text-xs shadow-sm" id="btn-inc-players" type="button">+</button>
+</div>
+</div>
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-all shadow-sm active:translate-y-0.5" id="btn-shuffle" type="button">
+<span class="material-symbols-outlined text-[18px]">shuffle</span>
+<span>사다리 재생성</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-secondary-container text-on-secondary font-label-md text-label-md hover:opacity-95 transition-all shadow-[0_4px_14px_rgba(255,82,143,0.3)] active:translate-y-0.5" id="btn-reveal-all" type="button">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span>전체 결과 보기</span>
+</button>
+</div>
+</div>
+<!-- Main Game Board Grid (Ladder Canvas + Side Match Board) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Ladder Stage Canvas Area (8 Cols on Desktop) -->
+<div class="lg:col-span-8 flex flex-col bg-surface-card rounded-2xl shadow-[0_8px_30px_rgba(98,57,229,0.06)] p-space-md sm:p-space-lg relative overflow-hidden">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-success-mint animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">플레이어 칩을 클릭하여 출발하세요</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 text-xs font-semibold" id="btn-reset-board" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span> 리셋
+          </button>
+</div>
+<!-- Participants Slot (Upper Pins) -->
+<div class="grid grid-cols-4 gap-2 pt-2 pb-3 transition-all duration-300" id="participants-container">
+<!-- Injected dynamically via JS, defaults 4 players -->
+</div>
+<!-- Interactive SVG Canvas Frame -->
+<div class="relative w-full rounded-xl bg-surface-container-low/60 p-2 sm:p-3 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-secondary/5 pointer-events-none"></div>
+<svg class="w-full h-[360px] sm:h-[420px] select-none block" id="ladder-svg" preserveaspectratio="none" viewbox="0 0 600 400">
+<!-- Background vertical rails and rungs will be dynamically drawn -->
+<g id="ladder-rails-layer"></g>
+<g id="ladder-rungs-layer"></g>
+<g id="ladder-trace-layer"></g>
+<g id="ladder-runners-layer"></g>
+</svg>
+</div>
+<!-- Penalty Slot (Bottom Receptors) -->
+<div class="grid grid-cols-4 gap-2 pt-3 transition-all duration-300" id="penalties-container">
+<!-- Injected dynamically via JS -->
+</div>
+</div>
+<!-- Live Matching & Status Side Panel (4 Cols on Desktop) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Live Results Bento Card -->
+<div class="bg-surface-card rounded-2xl p-space-md shadow-[0_8px_24px_rgba(98,57,229,0.06)] flex flex-col">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">실시간 결과표</h3>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full" id="completed-count-pill">0/4 완료</span>
+</div>
+<div class="flex flex-col gap-2.5 mt-space-sm min-h-[190px]" id="summary-list">
+<!-- Dynamic Result Matching Items -->
+</div>
+</div>
+<!-- Party Penalty Preset Quick Switcher -->
+<div class="bg-surface-card rounded-2xl p-space-md shadow-[0_8px_24px_rgba(98,57,229,0.06)] flex flex-col">
+<div class="flex items-center justify-between mb-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-party-yellow text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>벌칙 프리셋 추천</span>
+</h4>
+<span class="font-label-sm text-label-sm text-primary font-bold">인기 룰셋</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">버튼을 눌러 사다리 하단 벌칙 리스트를 한번에 변경하세요.</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="preset-btn px-2.5 py-2 rounded-xl bg-surface-container-low hover:bg-primary-fixed hover:text-on-primary-fixed text-left transition-all" data-preset="party" type="button">
+<span class="font-label-md text-label-md block text-on-surface">🎉 대학 MT / 술자리</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">흑역사 공개, 편의점 쏘기 등</span>
+</button>
+<button class="preset-btn px-2.5 py-2 rounded-xl bg-surface-container-low hover:bg-primary-fixed hover:text-on-primary-fixed text-left transition-all" data-preset="mild" type="button">
+<span class="font-label-md text-label-md block text-on-surface">☕ 깔끔한 커피 내기</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">디저트 쏘기, 설거지 당번 등</span>
+</button>
+</div>
+</div>
+<!-- Quick Tips Mini Banner -->
+<div class="bg-gradient-to-r from-primary-fixed to-secondary-fixed/50 rounded-2xl p-space-md flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-card flex items-center justify-center shrink-0 text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">tips_and_updates</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">사다리 팁</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">친구 이름을 클릭하면 화려한 네온 트레이서가 경로를 직접 찾아갑니다!</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Big Result Celebration Dialog Modal (Hidden by Default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-background/50 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300" id="celebration-modal">
+<div class="bg-surface-card rounded-3xl max-w-md w-full p-6 sm:p-8 flex flex-col items-center text-center shadow-[0_24px_50px_rgba(98,57,229,0.25)] transform scale-95 transition-all duration-300" id="modal-box">
+<div class="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold shadow-lg mb-3 -mt-12 bg-primary text-on-primary" id="modal-avatar-badge">
+        🎉
+      </div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Penalty Confirmed!</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-1" id="modal-player-name">지은 님의 벌칙</h3>
+<div class="w-full bg-surface-container-low rounded-2xl p-4 my-4 flex flex-col items-center justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">걸려버린 운명의 미션</span>
+<div class="font-headline-md text-headline-md text-secondary-container mt-1 font-extrabold break-keep" id="modal-penalty-title">
+          엉덩이로 이름 쓰기
+        </div>
+</div>
+<div class="flex items-center gap-2 w-full">
+<button class="w-full py-3 rounded-full bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:opacity-95 transition-all" id="modal-close-btn" type="button">
+          확인 완료!
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+(() => {
+  // Player Palette Config
+  const COLOR_PALETTE = [
+    { key: 'pink', bg: 'bg-[#ff528f]', border: 'border-[#ff528f]', text: 'text-[#ff528f]', stroke: '#ff528f', light: 'bg-[#ffd9e0]' },
+    { key: 'blue', bg: 'bg-[#38bdf8]', border: 'border-[#38bdf8]', text: 'text-[#0284c7]', stroke: '#38bdf8', light: 'bg-[#e0f2fe]' },
+    { key: 'mint', bg: 'bg-[#10b981]', border: 'border-[#10b981]', text: 'text-[#059669]', stroke: '#10b981', light: 'bg-[#d1fae5]' },
+    { key: 'yellow', bg: 'bg-[#ffd027]', border: 'border-[#ffd027]', text: 'text-[#b45309]', stroke: '#ffd027', light: 'bg-[#fef3c7]' },
+    { key: 'purple', bg: 'bg-[#7b57ff]', border: 'border-[#7b57ff]', text: 'text-[#6239e5]', stroke: '#7b57ff', light: 'bg-[#e6deff]' },
+    { key: 'coral', bg: 'bg-[#ff4365]', border: 'border-[#ff4365]', text: 'text-[#dc2626]', stroke: '#ff4365', light: 'bg-[#fee2e2]' },
+    { key: 'teal', bg: 'bg-[#008672]', border: 'border-[#008672]', text: 'text-[#006a5a]', stroke: '#008672', light: 'bg-[#ccfbf1]' },
+    { key: 'indigo', bg: 'bg-[#4338ca]', border: 'border-[#4338ca]', text: 'text-[#3730a3]', stroke: '#4338ca', light: 'bg-[#e0e7ff]' }
+  ];
+
+  const PRESETS = {
+    party: [
+      { text: "물풍선 맞기 🎈", icon: "water_drop" },
+      { text: "엉덩이로 이름쓰기 🍑", icon: "gesture" },
+      { text: "노래 한 곡 완창 🎤", icon: "mic" },
+      { text: "편의점 쏘기 🍦", icon: "storefront" },
+      { text: "매운맛 라면 먹기 🍜", icon: "local_fire_department" },
+      { text: "섹시 댄스 10초 💃", icon: "nightlife" },
+      { text: "얼굴에 낙서 1개 🎨", icon: "draw" },
+      { text: "생존! 벌칙 면제 ✨", icon: "verified" }
+    ],
+    mild: [
+      { text: "모닝 커피 쏘기 ☕", icon: "coffee" },
+      { text: "오늘의 설거지 담당 🧽", icon: "soap" },
+      { text: "디저트 쏘기 🍰", icon: "cake" },
+      { text: "칭찬 3명에게 하기 💖", icon: "sentiment_very_satisfied" },
+      { text: "생수 채워놓기 💧", icon: "water" },
+      { text: "자리 정리정돈 🧹", icon: "cleaning_services" },
+      { text: "심부름 1회권 🏃", icon: "sprint" },
+      { text: "완벽 면제! 통과 🍀", icon: "celebration" }
+    ]
+  };
+
+  const DEFAULT_NAMES = ["민수", "지은", "준호", "수빈", "태양", "하은", "도윤", "유진"];
+  const DEFAULT_AVATARS = ["🦁", "🐰", "🐻", "🐱", "🐶", "🦊", "🐼", "🐨"];
+
+  let playerCount = 4;
+  let activePreset = "party";
+  let rungs = []; // ladder bridges { rungIndex, colA, colB, y }
+  let resultsMatched = {}; // participantIndex => penaltyIndex
+  let isAnimating = false;
+
+  const svg = document.getElementById('ladder-svg');
+  const railsLayer = document.getElementById('ladder-rails-layer');
+  const rungsLayer = document.getElementById('ladder-rungs-layer');
+  const traceLayer = document.getElementById('ladder-trace-layer');
+  const runnersLayer = document.getElementById('ladder-runners-layer');
+  const participantsContainer = document.getElementById('participants-container');
+  const penaltiesContainer = document.getElementById('penalties-container');
+  const summaryList = document.getElementById('summary-list');
+  const playerCountDisplay = document.getElementById('player-count-display');
+  const completedCountPill = document.getElementById('completed-count-pill');
+
+  // Modal elements
+  const modal = document.getElementById('celebration-modal');
+  const modalBox = document.getElementById('modal-box');
+  const modalPlayerName = document.getElementById('modal-player-name');
+  const modalPenaltyTitle = document.getElementById('modal-penalty-title');
+  const modalAvatarBadge = document.getElementById('modal-avatar-badge');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+
+  function getColX(index, total) {
+    const pad = 40;
+    const width = 600 - (pad * 2);
+    return pad + (index * (width / (total - 1)));
+  }
+
+  function initBoard() {
+    resultsMatched = {};
+    updateSummary();
+    renderParticipants();
+    renderPenalties();
+    generateLadderStructure();
+    drawLadder();
+  }
+
+  function renderParticipants() {
+    participantsContainer.innerHTML = '';
+    participantsContainer.className = `grid grid-cols-${playerCount} gap-1.5 sm:gap-2 pt-1 pb-2 transition-all`;
+
+    for (let i = 0; i < playerCount; i++) {
+      const color = COLOR_PALETTE[i % COLOR_PALETTE.length];
+      const isDone = resultsMatched[i] !== undefined;
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.id = `participant-chip-${i}`;
+      chip.className = `group flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-200 transform hover:-translate-y-1 hover:shadow-md ${
+        isDone ? 'bg-surface-container opacity-60' : 'bg-surface-card hover:bg-primary-fixed/30 shadow-sm'
+      } cursor-pointer`;
+
+      chip.innerHTML = `
+        <div class="relative">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full ${color.bg} text-white flex items-center justify-center text-lg shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
+            ${DEFAULT_AVATARS[i % DEFAULT_AVATARS.length]}
+          </div>
+          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-surface-card flex items-center justify-center text-[10px] font-bold text-on-surface-variant shadow">
+            ${i + 1}
+          </span>
+        </div>
+        <span class="font-headline-sm text-label-md text-on-surface mt-1.5 font-bold group-hover:${color.text} truncate max-w-full">
+          ${DEFAULT_NAMES[i]}
+        </span>
+        <span class="text-[10px] text-on-surface-variant font-medium tracking-tight">출발하기</span>
+      `;
+
+      chip.addEventListener('click', () => {
+        if (isAnimating) return;
+        runParticipant(i);
+      });
+
+      participantsContainer.appendChild(chip);
+    }
+  }
+
+  function renderPenalties() {
+    penaltiesContainer.innerHTML = '';
+    penaltiesContainer.className = `grid grid-cols-${playerCount} gap-1.5 sm:gap-2 pt-2 transition-all`;
+
+    const penaltyItems = PRESETS[activePreset];
+
+    for (let i = 0; i < playerCount; i++) {
+      const penalty = penaltyItems[i % penaltyItems.length];
+      const card = document.createElement('div');
+      card.id = `penalty-card-${i}`;
+      card.className = `flex flex-col items-center justify-center text-center p-2 sm:p-2.5 rounded-xl bg-surface-container-low transition-all duration-300`;
+
+      card.innerHTML = `
+        <span class="material-symbols-outlined text-[18px] sm:text-[20px] text-primary mb-1">${penalty.icon}</span>
+        <span class="font-label-sm text-[11px] sm:text-label-sm text-on-surface font-semibold line-clamp-2 leading-tight">
+          ${penalty.text}
+        </span>
+      `;
+      penaltiesContainer.appendChild(card);
+    }
+  }
+
+  function generateLadderStructure() {
+    rungs = [];
+    const numRows = 7; // ladder tier steps
+    const yTop = 30;
+    const yBottom = 370;
+    const stepY = (yBottom - yTop) / (numRows + 1);
+
+    for (let row = 1; row <= numRows; row++) {
+      const currentY = yTop + (row * stepY);
+      // for each column gap, decide randomly if rung connects
+      let prevConnected = false;
+      for (let col = 0; col < playerCount - 1; col++) {
+        if (!prevConnected && Math.random() > 0.42) {
+          rungs.push({
+            colA: col,
+            colB: col + 1,
+            y: currentY + (Math.random() * 8 - 4) // subtle organic jitter
+          });
+          prevConnected = true;
+        } else {
+          prevConnected = false;
+        }
+      }
+    }
+  }
+
+  function drawLadder() {
+    // Clear layers
+    railsLayer.innerHTML = '';
+    rungsLayer.innerHTML = '';
+    traceLayer.innerHTML = '';
+    runnersLayer.innerHTML = '';
+
+    const yTop = 15;
+    const yBottom = 385;
+
+    // Draw vertical rails
+    for (let i = 0; i < playerCount; i++) {
+      const x = getColX(i, playerCount);
+      const rail = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      rail.setAttribute('x1', x);
+      rail.setAttribute('y1', yTop);
+      rail.setAttribute('x2', x);
+      rail.setAttribute('y2', yBottom);
+      rail.setAttribute('stroke', '#cac3d8');
+      rail.setAttribute('stroke-width', '4');
+      rail.setAttribute('stroke-linecap', 'round');
+      railsLayer.appendChild(rail);
+
+      // Top and bottom endpoint dots
+      [yTop, yBottom].forEach(yPos => {
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', x);
+        dot.setAttribute('cy', yPos);
+        dot.setAttribute('r', '5');
+        dot.setAttribute('fill', '#797487');
+        railsLayer.appendChild(dot);
+      });
+    }
+
+    // Draw horizontal rungs
+    rungs.forEach(rung => {
+      const x1 = getColX(rung.colA, playerCount);
+      const x2 = getColX(rung.colB, playerCount);
+
+      const bridge = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      bridge.setAttribute('x1', x1);
+      bridge.setAttribute('y1', rung.y);
+      bridge.setAttribute('x2', x2);
+      bridge.setAttribute('y2', rung.y);
+      bridge.setAttribute('stroke', '#a2a4b8');
+      bridge.setAttribute('stroke-width', '3.5');
+      bridge.setAttribute('stroke-linecap', 'round');
+      rungsLayer.appendChild(bridge);
+
+      // Decorative joint rings
+      [x1, x2].forEach(jointX => {
+        const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        ring.setAttribute('cx', jointX);
+        ring.setAttribute('cy', rung.y);
+        ring.setAttribute('r', '3');
+        ring.setAttribute('fill', '#7b57ff');
+        rungsLayer.appendChild(ring);
+      });
+    });
+  }
+
+  // Calculate full route points for a player index
+  function calculateRoute(playerIdx) {
+    let currentCol = playerIdx;
+    let currentY = 15;
+    const yBottom = 385;
+    const points = [{ x: getColX(currentCol, playerCount), y: currentY }];
+
+    // Sort rungs by Y coordinate
+    const sortedRungs = [...rungs].sort((a, b) => a.y - b.y);
+
+    sortedRungs.forEach(rung => {
+      if (rung.y > currentY) {
+        if (rung.colA === currentCol) {
+          // move vertically to rung.y
+          points.push({ x: getColX(currentCol, playerCount), y: rung.y });
+          // move horizontally to colB
+          currentCol = rung.colB;
+          points.push({ x: getColX(currentCol, playerCount), y: rung.y });
+          currentY = rung.y;
+        } else if (rung.colB === currentCol) {
+          // move vertically to rung.y
+          points.push({ x: getColX(currentCol, playerCount), y: rung.y });
+          // move horizontally to colA
+          currentCol = rung.colA;
+          points.push({ x: getColX(currentCol, playerCount), y: rung.y });
+          currentY = rung.y;
+        }
+      }
+    });
+
+    // Final move to bottom
+    points.push({ x: getColX(currentCol, playerCount), y: yBottom });
+    return { points, destinationCol: currentCol };
+  }
+
+  // Animate single player ladder traverse
+  function runParticipant(index, silentModal = false) {
+    return new Promise(resolve => {
+      const { points, destinationCol } = calculateRoute(index);
+      const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
+
+      // Remove previous traces of this index if re-run
+      const oldPath = document.getElementById(`trace-path-${index}`);
+      if (oldPath) oldPath.remove();
+      const oldRunner = document.getElementById(`runner-${index}`);
+      if (oldRunner) oldRunner.remove();
+
+      // Create SVG Path
+      let pathData = `M ${points[0].x} ${points[0].y}`;
+      for (let i = 1; i < points.length; i++) {
+        pathData += ` L ${points[i].x} ${points[i].y}`;
+      }
+
+      const pathElem = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      pathElem.setAttribute('id', `trace-path-${index}`);
+      pathElem.setAttribute('d', pathData);
+      pathElem.setAttribute('fill', 'none');
+      pathElem.setAttribute('stroke', color.stroke);
+      pathElem.setAttribute('stroke-width', '5');
+      pathElem.setAttribute('stroke-linecap', 'round');
+      pathElem.setAttribute('stroke-linejoin', 'round');
+      pathElem.setAttribute('class', 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.18)]');
+
+      const pathLength = 1200; // estimation for dash
+      pathElem.style.strokeDasharray = pathLength;
+      pathElem.style.strokeDashoffset = pathLength;
+      pathElem.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      traceLayer.appendChild(pathElem);
+
+      // Runner Head Dot
+      const runner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      runner.setAttribute('id', `runner-${index}`);
+      runner.setAttribute('cx', points[0].x);
+      runner.setAttribute('cy', points[0].y);
+      runner.setAttribute('r', '7');
+      runner.setAttribute('fill', color.stroke);
+      runner.setAttribute('class', 'filter drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]');
+      runnersLayer.appendChild(runner);
+
+      isAnimating = true;
+
+      // Trigger CSS stroke transition
+      requestAnimationFrame(() => {
+        pathElem.style.strokeDashoffset = '0';
+      });
+
+      // Animate marker alongside points
+      const totalSteps = points.length - 1;
+      const stepDuration = 1400 / totalSteps;
+      let curStep = 0;
+
+      const stepInterval = setInterval(() => {
+        curStep++;
+        if (curStep < points.length) {
+          runner.setAttribute('cx', points[curStep].x);
+          runner.setAttribute('cy', points[curStep].y);
+        } else {
+          clearInterval(stepInterval);
+          isAnimating = false;
+          resultsMatched[index] = destinationCol;
+
+          // Highlight destination card
+          highlightDestination(destinationCol, color);
+          updateSummary();
+          renderParticipants();
+
+          if (!silentModal) {
+            showResultModal(index, destinationCol);
+          }
+          resolve();
+        }
+      }, stepDuration);
+    });
+  }
+
+  function highlightDestination(colIndex, color) {
+    const card = document.getElementById(`penalty-card-${colIndex}`);
+    if (card) {
+      card.classList.remove('bg-surface-container-low');
+      card.classList.add(color.light, color.text, 'scale-105', 'shadow-md');
+    }
+  }
+
+  function updateSummary() {
+    const keys = Object.keys(resultsMatched);
+    completedCountPill.textContent = `${keys.length}/${playerCount} 완료`;
+
+    if (keys.length === 0) {
+      summaryList.innerHTML = `
+        <div class="flex flex-col items-center justify-center py-6 text-on-surface-variant text-center">
+          <span class="material-symbols-outlined text-[32px] text-outline-variant mb-1">hourglass_empty</span>
+          <span class="font-body-md text-body-md">사다리를 타면 여기에 매칭 결과가 실시간으로 표시됩니다.</span>
+        </div>
+      `;
+      return;
+    }
+
+    summaryList.innerHTML = '';
+    keys.sort((a, b) => a - b).forEach(pIdx => {
+      const penIdx = resultsMatched[pIdx];
+      const color = COLOR_PALETTE[pIdx % COLOR_PALETTE.length];
+      const penaltyItem = PRESETS[activePreset][penIdx % PRESETS[activePreset].length];
+
+      const row = document.createElement('div');
+      row.className = `flex items-center justify-between p-2 rounded-xl bg-surface-container-low transition-all`;
+      row.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full ${color.bg} text-white text-xs flex items-center justify-center font-bold">
+            ${DEFAULT_AVATARS[pIdx % DEFAULT_AVATARS.length]}
+          </span>
+          <span class="font-headline-sm text-label-md text-on-surface">${DEFAULT_NAMES[pIdx]}</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-secondary-container">arrow_forward</span>
+          <span class="font-label-md text-label-md font-bold text-secondary-container">${penaltyItem.text}</span>
+        </div>
+      `;
+      summaryList.appendChild(row);
+    });
+  }
+
+  function showResultModal(playerIdx, penaltyIdx) {
+    const color = COLOR_PALETTE[playerIdx % COLOR_PALETTE.length];
+    const penaltyItem = PRESETS[activePreset][penaltyIdx % PRESETS[activePreset].length];
+
+    modalAvatarBadge.textContent = DEFAULT_AVATARS[playerIdx % DEFAULT_AVATARS.length];
+    modalAvatarBadge.className = `w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold shadow-lg mb-3 -mt-12 ${color.bg} text-white`;
+    modalPlayerName.textContent = `${DEFAULT_NAMES[playerIdx]} 님의 벌칙`;
+    modalPenaltyTitle.textContent = penaltyItem.text;
+
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modalBox.classList.remove('scale-95');
+    modalBox.classList.add('scale-100');
+  }
+
+  function closeModal() {
+    modalBox.classList.add('scale-95');
+    modalBox.classList.remove('scale-100');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+  }
+
+  // Event Listeners
+  modalCloseBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.getElementById('btn-inc-players').addEventListener('click', () => {
+    if (playerCount < 8 && !isAnimating) {
+      playerCount++;
+      playerCountDisplay.textContent = playerCount;
+      initBoard();
+    }
+  });
+
+  document.getElementById('btn-dec-players').addEventListener('click', () => {
+    if (playerCount > 4 && !isAnimating) {
+      playerCount--;
+      playerCountDisplay.textContent = playerCount;
+      initBoard();
+    }
+  });
+
+  document.getElementById('btn-shuffle').addEventListener('click', () => {
+    if (isAnimating) return;
+    initBoard();
+  });
+
+  document.getElementById('btn-reset-board').addEventListener('click', () => {
+    if (isAnimating) return;
+    initBoard();
+  });
+
+  // Feature: Reveal All At Once (피드백 반영 버튼)
+  document.getElementById('btn-reveal-all').addEventListener('click', async () => {
+    if (isAnimating) return;
+    for (let i = 0; i < playerCount; i++) {
+      if (resultsMatched[i] === undefined) {
+        await runParticipant(i, true);
+      }
+    }
+  });
+
+  // Preset switchers
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const presetKey = btn.getAttribute('data-preset');
+      if (PRESETS[presetKey]) {
+        activePreset = presetKey;
+        initBoard();
+      }
+    });
+  });
+
+  // Kickstart initial game board
+  initBoard();
+})();
+</script></div></main><footer class="w-full bg-surface-container-low py-space-lg shadow-[0_-1px_8px_rgba(123,87,255,0.03)]"><div class="max-w-[840px] mx-auto px-margin md:px-margin-md flex flex-col sm:flex-row items-center justify-between gap-space-sm text-center sm:text-left"><div class="flex items-center gap-space-xs"><span class="font-label-lg text-label-lg text-primary">Penalty Party</span><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 All Fun Reserved.</span></div><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">이용 가이드</span><span class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">벌칙 룰셋</span><span class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">피드백 남기기</span></div></div></footer></body></html>
